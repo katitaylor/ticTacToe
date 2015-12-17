@@ -3,39 +3,47 @@ $("document").ready(function() {
 
     });
 
-var player = "X";
-var player2 = "O"
-
-// switch case for turns
+var player;
 
 
+// if:else for turns
+for (var i = 0; i < 9; i++){
 
-$(".square").on("click", function() {
-  $(this).text(player);
+// function currentMove() {
+  $(".square").click(function(){
+    console.log("yes")
+  if (i % 2 !== 0) {
+    player = "x";
+    $(this).text(player);
+    i+=1;
+  }else if (i % 2 === 0)  {
+    player = "o";
+    $(this).text(player);
+    i+=1;
+  }
+})
+};
+// };
+// };
 
-});
 
-$(".square").on("click", function() {
-  $(this).text(player2);
-
-});
 
 // three turn each
 
 // evaluate winner with array
 
-sum.val=["22", "93", "655", "636", "722", "38", "10", "30"];
+// sum.val=["22", "93", "655", "636", "722", "38", "10", "30"];
 
     // turn: "O",  // Keeps a record of who's turn it is
     // board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
     // win: false, // records who won if the game is over
 
-    // // / Clears and starts a new game with a new board /
-    // restartGame: function() {
-    //   // Draw the board
-    //   // var board_table = '<table cellpadding="0px" cellspacing="0px" align="center" border="0px" class="board"><tr><td id="ttt0"> </td><td id="ttt1"> </td><td id="ttt2"> </td></tr><tr><td id="ttt3"> </td><td id="ttt4"> </td><td id="ttt5"> </td></tr><tr><td id="ttt6"> </td><td id="ttt7"> </td><td id="ttt8"> </td></tr></table>';
-    //   $("#board").html(board_table);
-    //   $("#menu").hide();
+// $(".square").on("click", function() {
+//   $(this).text(player);
+
+
+// $(".square").on("click", function() {
+//   $(this).text(player2);
 
     //   // clear the board
     //   this.board = ["", "", "", "", "", "", "", "", "", ""];
