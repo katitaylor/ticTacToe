@@ -9,7 +9,19 @@ body {
   align: center;
 }
 
-td {
+Button {
+
+}
+
+td, tr {
+  height: 200px;
+  width: 200px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid green;
+}
+
+.square {
   height: 200px;
   width: 200px;
   text-align: center;
@@ -19,6 +31,7 @@ td {
   font-color: green;
   font-family: geniva, verdana, helvetica;
   border: 1px solid green;
+
 }
 
 #menu {

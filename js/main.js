@@ -1,14 +1,18 @@
 $("document").ready(function() {
 
-        // Start a game!
-        TicTacToe.restartGame();
+
     });
 
+var player = "X";
+var player2 = "O"
 
-var x = 0;
+$(".square").on("click", function() {
+  $(this).text(player);
 
+$(".square").on("click", function() {
+  $(this).text(player);
 
-
+});
 
 
 
