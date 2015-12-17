@@ -6,15 +6,25 @@ $("document").ready(function() {
 var player = "X";
 var player2 = "O"
 
-$(".square").on("click", function() {
-  $(this).text(player);
+// switch case for turns
+
+
 
 $(".square").on("click", function() {
   $(this).text(player);
 
 });
 
+$(".square").on("click", function() {
+  $(this).text(player2);
 
+});
+
+// three turn each
+
+// evaluate winner with array
+
+sum.val=["22", "93", "655", "636", "722", "38", "10", "30"];
 
     // turn: "O",  // Keeps a record of who's turn it is
     // board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
