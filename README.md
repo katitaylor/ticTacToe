@@ -10,7 +10,7 @@ mvp requirements:
 * User will open page to see a play board - grid divided into nine sections.
 User will have "player one" and "player two" pieces available.
 * User will be able to select any block on the game board.
-* each user will make three selections
+* each user will make three selections :: completed thurs., 12/17
 * If three adjoining grid sections have been selected an alert "winner!" will appear.
 
 actions:
@@ -18,7 +18,7 @@ create wireframe on gliffy
 design game board with 9 divided sections
 design game pieces
 
-- board with 9 quadrants (3 x 3 grid)
+- board with 9 quadrants (3 x 3 grid) :: completed wed., 12/16
 - buttons:
     play game
     player 1 : on & off position

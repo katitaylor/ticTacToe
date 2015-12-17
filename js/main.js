@@ -1,17 +1,18 @@
 $("document").ready(function() {
 
 
+
     });
 
 var player;
-
+var winner = ["22", "93", "655", "636", "722", "38", "10", "30"];
 
 // if:else for turns
 for (var i = 0; i < 9; i++){
 
 // function currentMove() {
   $(".square").click(function(){
-    console.log("yes")
+
   if (i % 2 !== 0) {
     player = "x";
     $(this).text(player);
@@ -22,7 +23,13 @@ for (var i = 0; i < 9; i++){
     i+=1;
   }
 })
+
+var winner=[];
+winner = ["22", "93", "655", "636", "722", "38", "10", "30"];
+
 };
+
+
 // };
 // };
 
@@ -34,9 +41,6 @@ for (var i = 0; i < 9; i++){
 
 // sum.val=["22", "93", "655", "636", "722", "38", "10", "30"];
 
-    // turn: "O",  // Keeps a record of who's turn it is
-    // board: ["", "", "", "", "", "", "", "", "", ""],  // Keeps a record of the TicTacToe Board
-    // win: false, // records who won if the game is over
 
 // $(".square").on("click", function() {
 //   $(this).text(player);
@@ -45,57 +49,6 @@ for (var i = 0; i < 9; i++){
 // $(".square").on("click", function() {
 //   $(this).text(player2);
 
-    //   // clear the board
-    //   this.board = ["", "", "", "", "", "", "", "", "", ""];
-
-    //   // Add on-click events to each of the boxes of the board
-    //   $("#board td").click(function(e) {
-    //       TicTacToe.move( e.target.id );
-    //      });
-
-    // }
-
-    // // / Handles clicks spaces on the board /
-    // move: function(id) {
-    //   var space = $("#" + id);  // Board space table element
-    //   var num = id.replace("ttt", ""); // # representing the space on the board
-
-    //   // If no one's gone there, and the game isn't over, go there!
-    //   if (!this.board[num] && !this.win) {
-    //     space.html( this.turn );
-    //     this.board[num] = this.turn;
-    //     this.nextTurn();  // End turn
-    //   }
-    // },
-
-    // // / Iterate turn and check if anyone one yet /
-    // nextTurn: function() {
-    //   this.turn = (this.turn == "O") ? "X" : "O";
-    //   this.win = this.check4Win();
-    //   if (this.win) {
-    //       this.endGame();
-    //   }
-    // },
-
-    // // / Display who won and options for new games /
-    // endGame: function() {
-
-    //   if (this.win == "Cat") {
-    //       $("#menu").html("Cats Game.");
-    //   } else {
-    //       $("#menu").html(this.win + " wins!");
-    //   }
-    //   $("#menu").append("Play Again");
-
-    //   // Button for playing again.
-    //   $("#play_again").click(function () {
-    //     TicTacToe.restartGame();
-    //   });
-
-    //   $("#menu").show();
-    //   this.win = false;
-
-    // },
 
     // // If any of these patters of board spaces have all X's or all O's somebody won!
     // wins: [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]],
