@@ -5,15 +5,15 @@ $("document").ready(function() {
     });
 
 // Variables
-var player1 = "X",
-player2 = "O",
-currentPlayer = player1;
+var currentPlayer;
+player1 = "X",
+player2 = "O";
 var columns = [[1,4,7],[2,5,8],[3,6,9]];
 var rows = [[1,2,3],[4,5,6],[7,8,9]];
 var diagonals = [[1,5,9],[3,5,7]];
-var boardState =    [[1,2,3],
-                 [4,5,6],
-                 [7,8,9]];
+var boardState =    [['','',''],
+                 ['','',''],
+                 ['','','']];
 
 $(".square").click(function() {
 
@@ -67,8 +67,8 @@ function updateBoard(square) {
 function checkForWinner() {
     console.log(boardState);
 
-    // var totalColumns = boardState[0].length;
-    // var totalRows = boardState[0].length;
+    var columns = boardState[0].length;
+    var rows = boardState[0].length;
 
     checkColumns();
     checkRows();
@@ -80,7 +80,7 @@ function checkForWinner() {
         for (var columns=0; columns<3; columns++) {
             var columns = [[1,4,7],[2,5,8],[3,6,9]];
             // for (var rows=0; rows<totalRows; rows++) {
-                columns.push(boardState[0][0]);
+                columns.push(boardState[0]);
             // }
             if (columns[[1,4,7],[2,5,8],[3,6,9]]) {
                 alert('winner column');
@@ -93,7 +93,7 @@ function checkForWinner() {
         for (var rows=0; rows<3; rows++) {
           var rows = [[1,2,3],[4,5,6],[7,8,9]];
             // for (var columns=0; columns<totalColumns; columns++) {
-                rows.push(boardState[0][0]);
+                rows.push(boardState[0]);
             // }
             if (rows[[1,2,3],[4,5,6],[7,8,9]]) {
                 alert('winner row');
@@ -105,7 +105,7 @@ function checkForWinner() {
     function checkDiagonals() {
         for (var diagonals=0; diagonals<2; diagonals++) {
           var diagonals = [[1,5,9],[3,5,7]];
-            diagonals.push(boardState[0][0]);
+            diagonals.push(boardState[0]);
         }
         if (diagonals[[1,5,9],[3,5,7]]) {
             alert('winner diagonal');
