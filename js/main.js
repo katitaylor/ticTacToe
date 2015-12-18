@@ -11,17 +11,21 @@ currentPlayer = player1;
 var columns = [[1,4,7],[2,5,8],[3,6,9]];
 var rows = [[1,2,3],[4,5,6],[7,8,9]];
 var diagonals = [[1,5,9],[3,5,7]];
-var boardState =    [['', '', ''],
-                 ['', '', ''],
-                 ['', '', '']];
+var boardState =    [[1,2,3],
+                 [4,5,6],
+                 [7,8,9]];
 
 $(".square").click(function() {
-    if(spotTaken(this)) {
-        console.log("That spot is already taken! Choose another.");
-    } else {
-        playerMove(this);
-    }
-} );
+
+  if (currentPlayer % 2 !== 0) {
+    player1 = "X";
+    $(this).text(player1);
+    currentPlayer+=1;
+  }else if (currentPlayer % 2 === 0)  {
+    player2 = "O";
+    $(this).text(player2);
+    currentPlayer+=1;
+  }
 
 
 // Alternates currentPlayer between player1 and player2
@@ -51,11 +55,11 @@ function spotTaken(square) {
 
 
 function updateBoard(square) {
-    var column = $(square).index();
+    var columns = $(square).index();
     console.log('column: ', columns);
-    var row = $(square).closest('.rows').index();
+    var rows = $(square).closest('.rows').index();
     console.log('row: ', rows);
-    boardState[rows[1,2,3],[4,5,6],[7,8,9]][columns[1,4,7],[2,5,8],[3,6,9]] = currentPlayer;
+    // boardState[rows][[columns]
 }
 
 
@@ -63,8 +67,8 @@ function updateBoard(square) {
 function checkForWinner() {
     console.log(boardState);
 
-    var totalColumns = boardState[0].length;
-    var totalRows = boardState[0].length;
+    // var totalColumns = boardState[0].length;
+    // var totalRows = boardState[0].length;
 
     checkColumns();
     checkRows();
@@ -75,9 +79,9 @@ function checkForWinner() {
     function checkColumns() {
         for (var columns=0; columns<3; columns++) {
             var columns = [[1,4,7],[2,5,8],[3,6,9]];
-            for (var rows=0; rows<totalRows; rows++) {
-                columns.push(boardState[rows][columns] );
-            }
+            // for (var rows=0; rows<totalRows; rows++) {
+                columns.push(boardState[0][0]);
+            // }
             if (columns[[1,4,7],[2,5,8],[3,6,9]]) {
                 alert('winner column');
             }
@@ -87,10 +91,10 @@ function checkForWinner() {
     //CHECK ROWS
     function checkRows() {
         for (var rows=0; rows<3; rows++) {
-            var rows = [[1,2,3],[4,5,6],[7,8,9]];
-            for (var columns=0; columns<totalColumns; columns++) {
-                rows.push(boardState[rows][columns]);
-            }
+          var rows = [[1,2,3],[4,5,6],[7,8,9]];
+            // for (var columns=0; columns<totalColumns; columns++) {
+                rows.push(boardState[0][0]);
+            // }
             if (rows[[1,2,3],[4,5,6],[7,8,9]]) {
                 alert('winner row');
             }
@@ -98,14 +102,17 @@ function checkForWinner() {
     }
 
     //CHECK DIAGONALS
-    function checkDiagonalLeft() {
-        var diagonals = [[1,5,9],[3,5,7]];
-        for (var diagonals=0; diagonals<totalDiagonals; diagonals++) {
-            diagonals.push(boardState[rows][rows]);
+    function checkDiagonals() {
+        for (var diagonals=0; diagonals<2; diagonals++) {
+          var diagonals = [[1,5,9],[3,5,7]];
+            diagonals.push(boardState[0][0]);
         }
         if (diagonals[[1,5,9],[3,5,7]]) {
             alert('winner diagonal');
         }
+
+
+
     // }
 
     // function checkDiagonalRight() {
@@ -138,7 +145,7 @@ function checkForWinner() {
 // }
 
 
- ;
+ });
 
 
 
