@@ -4,76 +4,172 @@ $("document").ready(function() {
 
     });
 
-var player;
-var winner = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[2,4,6],[0,4,8],];
+// Variables
+var currentPlayer;
+player1 = "X",
+player2 = "O";
+var columns = [[1,4,7],[2,5,8],[3,6,9]];
+var rows = [[1,2,3],[4,5,6],[7,8,9]];
+var diagonals = [[1,5,9],[3,5,7]];
+var boardState =    [['','',''],
+                 ['','',''],
+                 ['','','']];
 
-// if:else for turns
-for (var i = 0; i < 9; i++){
+$(".square").click(function() {
 
-// function currentMove() {
-  $(".square").click(function(){
-
-  if (i % 2 !== 0) {
-    player = "x";
-    $(this).text(player);
-    i+=1;
-  }else if (i % 2 === 0)  {
-    player = "o";
-    $(this).text(player);
-    i+=1;
+  if (currentPlayer % 2 !== 0) {
+    player1 = "X";
+    $(this).text(player1);
+    currentPlayer+=1;
+  }else if (currentPlayer % 2 === 0)  {
+    player2 = "O";
+    $(this).text(player2);
+    currentPlayer+=1;
   }
-})
 
 
-};
+// Alternates currentPlayer between player1 and player2
+function playerChange() {
+    // jQuery shortcode for inline if/then statement
+    (currentPlayer ? player2 : player1);
+    console.log("Player Turn: " + currentPlayer);
+}
 
 
-// };
-// };
+// Insert the X or O for whoever is currentPlayer.
+function playerMove(square) {
+    // $(square).text(currentPlayer);
+    $('#' + square.id).text(currentPlayer);
+    updateBoard(square);
+    checkForWinner();
+    playerChange();
+}
+
+
+// Checks to see if a square has already been played on
+function spotTaken(square) {
+    if(square === player1 || square === player2) {
+        return true;
+    }
+}
+
+
+function updateBoard(square) {
+    var columns = $(square).index();
+    console.log('column: ', columns);
+    var rows = $(square).closest('.rows').index();
+    console.log('row: ', rows);
+    // boardState[rows][[columns]
+}
 
 
 
-// three turn each
+function checkForWinner() {
+    console.log(boardState);
 
-// evaluate winner with array
+    var columns = boardState[0].length;
+    var rows = boardState[0].length;
 
-// sum.val=["22", "93", "655", "636", "722", "38", "10", "30"];
+    checkColumns();
+    checkRows();
+    checkDiagonals();
+    // checkDiagonalRight();
+
+    //CHECK COLUMNS
+    function checkColumns() {
+        for (var columns=0; columns<3; columns++) {
+            var columns = [[1,4,7],[2,5,8],[3,6,9]];
+            // for (var rows=0; rows<totalRows; rows++) {
+                columns.push(boardState[0]);
+            // }
+            if (columns[[1,4,7],[2,5,8],[3,6,9]]) {
+                alert('winner column');
+            }
+        }
+    }
+
+    //CHECK ROWS
+    function checkRows() {
+        for (var rows=0; rows<3; rows++) {
+          var rows = [[1,2,3],[4,5,6],[7,8,9]];
+            // for (var columns=0; columns<totalColumns; columns++) {
+                rows.push(boardState[0]);
+            // }
+            if (rows[[1,2,3],[4,5,6],[7,8,9]]) {
+                alert('winner row');
+            }
+        }
+    }
+
+    //CHECK DIAGONALS
+    function checkDiagonals() {
+        for (var diagonals=0; diagonals<2; diagonals++) {
+          var diagonals = [[1,5,9],[3,5,7]];
+            diagonals.push(boardState[0]);
+        }
+        if (diagonals[[1,5,9],[3,5,7]]) {
+            alert('winner diagonal');
+        }
 
 
-// $(".square").on("click", function() {
-//   $(this).text(player);
+
+    // }
+
+    // function checkDiagonalRight() {
+    //     var diagonalArray = [[3,5,7]];
+    //     // var column = totalColumns - 1;
+    //     for (var row=0; row<totalRows; row++) {
+    //         diagonalArray.push(boardState[row][column]);
+    //     }
+    //     if (diagonalArray[[3,5,7]]) {
+    //         alert('winner diagonal right to left');
+    //     }
+    }
+
+}
+
+// function allValuesSame(my_array) {
+//     for (var i=0; i<my_array.length - 1; i++) {
+//         if (my_array[i] === my_array[i+1]) {
+//             //do nothing
+//         }
+//         else {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+
+// function displayMessage(message) {
+//     $(".message").html(message);
+// }
 
 
-// $(".square").on("click", function() {
-//   $(this).text(player2);
+ });
 
 
-    // // If any of these patters of board spaces have all X's or all O's somebody won!
-    // wins: [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]],
 
-    // // / Check for whether someone won the game of it was a Cat's game. /
-    // check4Win: function() {
 
-    //   // Loop through all possible winning combinations
-    //   for (k in this.wins){
-    //     var pattern = this.wins[k];
-    //         var p = this.board[pattern[0]] + this.board[pattern[1]] + this.board[pattern[2]];
-    //         if (p == "XXX") {
-    //           return "X";  // X Won!
-    //         } else if (p == "OOO") {
-    //           return "O";  // O Won!
-    //         }
-    //       }
+// var player;
 
-    //       // Check if all spaces in the board are filled, then its a Cat's game
-    //       var cnt = 0;
-    //       for (s in this.board) {
-    //         if (this.board[s]) { cnt+=1; }
-    //       }
-    //       if (cnt == 9) {
-    //         return "Cat";  // Cat's game!
-    //       }
-    //   }
-    // };
+
+
+// // if:else for turns
+// for (var i = 0; i < 9; i++){
+
+// // function currentMove() {
+//   $(".square").click(function(){
+
+//   if (i % 2 !== 0) {
+//     player = "X";
+//     $(this).text(player);
+//     i+=1;
+//   }else if (i % 2 === 0)  {
+//     player = "O";
+//     $(this).text(player);
+//     i+=1;
+//   }
+// })
+
 
 
